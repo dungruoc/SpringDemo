@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-init-method="myInit" default-destroy-method="myCleanup">
+    <bean id="AbsPoint" class="org.dungmd.javaspring.Point" init-method="myInit" destroy-method="myCleanup" abstract="true"/>
+
+    <bean id="pointA" class="org.dungmd.javaspring.Point"  parent="AbsPoint"
+        scope="prototype"
+    >
+        <property name="x" value="-20" />
+        <property name="y" value="0" />
+    </bean>
+    <bean id="pointB" class="org.dungmd.javaspring.Point"  parent="AbsPoint"
+        scope="prototype"
+    >
+        <property name="x" value="0" />
+        <property name="y" value="0" />
+    </bean>
+    <bean id="pointC" class="org.dungmd.javaspring.Point"  parent="AbsPoint">
+        <constructor-arg index="0" value="20" />
+        <constructor-arg index="1" value="0" />
+    </bean>
+    <bean id="chain" class="org.dungmd.javaspring.Chain">
+        <property name="points">
+            <list>
+                <ref bean="pointA" />
+                <ref bean="pointB" />
+                <ref bean="pointC" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="cycle" class="org.dungmd.javaspring.Chain" parent="chain">
+        <property name="points">
+            <list merge="true">
+                <ref bean="pointA" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="triangle" class="org.dungmd.javaspring.Triangle"
+        autowire="byName"
+    >
+    </bean>
+    <alias name="triangle" alias="triangle-alias" />
+</beans>
