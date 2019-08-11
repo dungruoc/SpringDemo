@@ -2,6 +2,7 @@ package org.dungmd.javaspring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -14,6 +15,7 @@ public class Triangle implements Shape, BeanNameAware, ApplicationContextAware {
         return pointA;
     }
 
+    @Autowired
     public void setPointA(Point pointA) {
         this.pointA = pointA;
     }
@@ -22,6 +24,7 @@ public class Triangle implements Shape, BeanNameAware, ApplicationContextAware {
         return pointB;
     }
 
+    @Autowired
     public void setPointB(Point pointB) {
         this.pointB = pointB;
     }
@@ -30,6 +33,7 @@ public class Triangle implements Shape, BeanNameAware, ApplicationContextAware {
         return pointC;
     }
 
+    @Autowired
     public void setPointC(Point pointC) {
         this.pointC = pointC;
     }

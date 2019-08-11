@@ -17,6 +17,9 @@ public class DrawingApp {
 
         aShape = (Shape) aContext.getBean("cycle");
         aShape.draw();
+
+        aShape = (Shape) aContext.getBean("circle");
+        aShape.draw();
     }
 
 }
