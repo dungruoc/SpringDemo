@@ -7,8 +7,8 @@
     <bean id="pointA" class="org.dungmd.javaspring.Point"  parent="AbsPoint"
         scope="prototype"
     >
-        <property name="x" value="-20" />
-        <property name="y" value="0" />
+        <property name="x" value="${pointA.x}" />
+        <property name="y" value="${pointA.y}" />
     </bean>
     <bean id="pointB" class="org.dungmd.javaspring.Point"  parent="AbsPoint"
         scope="prototype"
@@ -43,4 +43,9 @@
     >
     </bean>
     <alias name="triangle" alias="triangle-alias" />
+    <bean class="org.dungmd.javaspring.DisplayNameBeanPostProcessor" />
+    <bean class="org.dungmd.javaspring.DisplayNameBeanFactoryPostProcessor" />
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="locations" value="pointsconfig.properties" />
+    </bean>
 </beans>
