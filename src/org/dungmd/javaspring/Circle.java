@@ -2,6 +2,7 @@ package org.dungmd.javaspring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,7 +11,18 @@ public class Circle implements Shape {
 	private Point center;
 	private float radius;
 	
-	public Point getCenter() {
+	@Autowired
+	private MessageSource messageSource;
+	
+	public MessageSource getMessageSource() {
+        return messageSource;
+    }
+
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
+    public Point getCenter() {
 		return center;
 	}
 
@@ -30,7 +42,7 @@ public class Circle implements Shape {
 
 	@Override
 	public void draw() {
-        System.out.println("Circle center: " + center.toString() + " - radius: " + radius);
+        System.out.println(this.messageSource.getMessage("drawing.circle", new Object [] {this.getCenter().toString(), this.getRadius()}, null, null));
 	}
 
 }

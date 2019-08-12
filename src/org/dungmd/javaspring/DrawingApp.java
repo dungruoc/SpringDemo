@@ -3,6 +3,8 @@ package org.dungmd.javaspring;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.sun.tools.javac.util.Context;
+
 public class DrawingApp {
 
     public static void main(String[] args) {
@@ -25,6 +27,8 @@ public class DrawingApp {
         System.out.println("Drawing Circle");
         aShape = (Shape) aContext.getBean("circle");
         aShape.draw();
+        
+        System.out.println(aContext.getMessage("greeting", null, "Default Greeting", null));
     }
 
 }
