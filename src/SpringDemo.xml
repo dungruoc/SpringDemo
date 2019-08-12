@@ -10,6 +10,7 @@
     default-init-method="myInit" default-destroy-method="myCleanup">
 
 	<context:annotation-config />
+    <context:component-scan base-package="org.dungmd.javaspring" />
 	
     <bean id="AbsPoint" class="org.dungmd.javaspring.Point" init-method="myInit" destroy-method="myCleanup" abstract="true"/>
 
@@ -51,9 +52,6 @@
     <bean id="triangle" class="org.dungmd.javaspring.Triangle"
         autowire="byName"
     >
-    </bean>
-
-    <bean id="circle" class="org.dungmd.javaspring.Circle">
     </bean>
 
     <alias name="triangle" alias="triangle-alias" />

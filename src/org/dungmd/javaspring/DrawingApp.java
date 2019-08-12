@@ -9,15 +9,20 @@ public class DrawingApp {
         // Triangle aTriangle = new Triangle();
         AbstractApplicationContext aContext = new ClassPathXmlApplicationContext("SpringDemo.xml");
         aContext.registerShutdownHook();
+
+        System.out.println("Drawing Chain");
         Shape aShape = (Shape) aContext.getBean("chain");
         aShape.draw();
 
+        System.out.println("Drawing Triangle");
         aShape = (Shape) aContext.getBean("triangle-alias");
         aShape.draw();
 
+        System.out.println("Drawing Cycled Chain");
         aShape = (Shape) aContext.getBean("cycle");
         aShape.draw();
 
+        System.out.println("Drawing Circle");
         aShape = (Shape) aContext.getBean("circle");
         aShape.draw();
     }

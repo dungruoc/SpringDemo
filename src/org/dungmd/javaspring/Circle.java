@@ -2,7 +2,9 @@ package org.dungmd.javaspring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Circle implements Shape {
 
 	private Point center;
